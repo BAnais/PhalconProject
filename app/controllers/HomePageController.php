@@ -3,7 +3,7 @@
 class HomePageController extends ControllerBase
 {
 
-    public function homePageAction()
+    public function indexAction()
     {
 
     }
