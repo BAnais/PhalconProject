@@ -11,7 +11,6 @@ class Users extends Model
 {
   protected $name;
   protected $password;
-  protected $isAdmin;
 
   public function __get($property)
   {
