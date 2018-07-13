@@ -9,9 +9,9 @@ use Phalcon\Mvc\Model;
  */
 class Articles extends Model
 {
-  protected $articleTitle;
-  protected $articleSummary;
-  protected $articleContent;
+  protected $Title;
+  protected $Summary;
+  protected $Content;
   protected $publicationDate;
 
   /**
@@ -19,7 +19,7 @@ class Articles extends Model
    */
   function getArticleTitle()
   {
-    return $this->$articleTitle;
+    return $this->$Title;
   }
   /**
    *
@@ -29,14 +29,14 @@ class Articles extends Model
     if(empty($setTitle)){
       throw new InvalidArgumentException("Invalid new Title", 1);
     }
-    $this->$articleTitle = $setTitle;
+    $this->$Title = $setTitle;
   }
   /**
    *
    */
   function getSummaryArticle()
   {
-    return $this->$articleSummary;
+    return $this->$Summary;
   }
   /**
    *
@@ -46,14 +46,14 @@ class Articles extends Model
     if(empty($setSummary)){
       throw new InvalidArgumentException("Invalid new Summary", 1);
     }
-    $this->$articleSummary = $setSummary;
+    $this->$Summary = $setSummary;
   }
   /**
    *
    */
   function getArticleContent()
   {
-    return $this->$articleContent;
+    return $this->$Content;
   }
   /**
    *
@@ -63,7 +63,7 @@ class Articles extends Model
     if(empty($setContent)){
       throw new InvalidArgumentException("Invalid new Content", 1);
     }
-    $this->$articleContent = $setContent;
+    $this->$Content = $setContent;
   }
   /**
    *
