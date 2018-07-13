@@ -1,31 +1,77 @@
 <?php
-namespace HomePage;
 
-use InvalidArgumentException;
-use Phalcon\Mvc\Model;
-
-/**
- *
- */
-class Articles extends Model
+class Articles extends \Phalcon\Mvc\Model
 {
-  protected $Title;
-  protected $Summary;
-  protected $Content;
-  protected $publicationDate;
 
-  public function __get($property)
-  {
-    if(property_exists($this, $property)){
-      return $this->$property;
+    /**
+     *
+     * @var integer
+     */
+    public $id;
+
+    /**
+     *
+     * @var string
+     */
+    public $title;
+
+    /**
+     *
+     * @var string
+     */
+    public $summary;
+
+    /**
+     *
+     * @var string
+     */
+    public $content;
+
+    /**
+     *
+     * @var string
+     */
+    public $publicationDate;
+
+    /**
+     * Initialize method for model.
+     */
+    public function initialize()
+    {
+        $this->setSchema("phalconbase");
+        $this->setSource("articles");
     }
-  }
-  public function __set($property, $value)
-  {
-    if(property_exists($this, $property)){
-      $this->$property = $value;
+
+    /**
+     * Returns table name mapped in the model.
+     *
+     * @return string
+     */
+    public function getSource()
+    {
+        return 'articles';
     }
-    return $this;
-  }
+
+    /**
+     * Allows to query a set of records that match the specified conditions
+     *
+     * @param mixed $parameters
+     * @return Articles[]|Articles|\Phalcon\Mvc\Model\ResultSetInterface
+     */
+    public static function find($parameters = null)
+    {
+        return parent::find($parameters);
+    }
+
+    /**
+     * Allows to query the first record that match the specified conditions
+     *
+     * @param mixed $parameters
+     * @return Articles|\Phalcon\Mvc\Model\ResultInterface
+     */
+    public static function findFirst($parameters = null)
+    {
+        return parent::findFirst($parameters);
+    }
+
 }
- ?>
