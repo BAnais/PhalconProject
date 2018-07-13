@@ -8,9 +8,6 @@ class AdministrationController extends ControllerBase
 
     }
 
-    public function editAction()
-    {
 
-    }
 }
  ?>
