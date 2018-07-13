@@ -1,0 +1,47 @@
+<?php
+
+$addArticle = true;
+echo ($addArticle ? ' New ' : ' Edit ').' Article :  ';
+
+if($addArticle){
+  $Article = Articles::findFirst($idArticle);
+}
+
+ echo $this->tag->form("articles"); ?>
+    <p>
+        <label for="title">Title</label>
+        <?php echo $this->tag->textField(
+          [
+            'title',
+            'placeholder' => 'Name of the Article',
+          ]); ?>
+    </p>
+
+    <p>
+        <label for="summary">Summary</label>
+        <?php echo $this->tag->textField(
+          [
+            'summary',
+            'placeholder' => 'Summary here',
+          ]); ?>
+    </p>
+
+    <p>
+        <label for="content">Content</label>
+        <?php echo $this->tag->textArea(
+          [
+            'content',
+            'placeholder' => 'Write the content here',
+          ]); ?>
+    </p>
+
+    <p>
+        <label for="publicationDate">Publication Date</label>
+        <?php echo $this->tag->dateField("publicationDate"); ?>
+    </p>
+
+    <p>
+        <?php echo $this->tag->submitButton("Save Changes"); ?>
+    </p>
+
+</form>
