@@ -1,0 +1,21 @@
+
+  <h4>Widget News Admin</h4>
+  <p>
+    You're logged in as admin. <a href="#">Log out</a>
+  </p>
+  <h2> All Articles </h2>
+
+  <TABLE BORDER="1">
+  <CAPTION> Articles </CAPTION>
+    <TR>
+      <TH> Publication Date </TH>
+      <TD> Artcile </TD>
+    </TR>
+  </TABLE>
+
+<?php
+$articleNumber = 5;
+echo $articleNumber.($articleNumber>1 ? ' articles ' : ' article ').' in total. ';
+ ?>
+
+<a href="#">Add new Article </a>
