@@ -1,0 +1,19 @@
+<?php
+
+ echo $this->tag->form("articles"); ?>
+
+    <p>
+        <label for="userName">Username</label>
+        <?php echo $this->tag->textField("userName"); ?>
+    </p>
+
+    <p>
+        <label for="pwd">Password</label>
+        <?php echo $this->tag->passwordField("pwd"); ?>
+    </p>
+
+    <p>
+        <?php echo $this->tag->submitButton("Login"); ?>
+    </p>
+
+</form>
