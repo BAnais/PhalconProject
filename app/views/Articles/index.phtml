@@ -1,7 +1,12 @@
 
   <h4>Widget News Admin</h4>
   <p>
-    You're logged in as admin. <a href="#">Log out</a>
+    You're logged in as admin.
+    <?php echo $this->tag->linkTo(
+        "signin/logout",
+        "Log out  "
+    );
+    ?>
   </p>
   <h2> All Articles </h2>
 
@@ -16,6 +21,8 @@
 <?php
 $articleNumber = 5;
 echo $articleNumber.($articleNumber>1 ? ' articles ' : ' article ').' in total. ';
- ?>
 
-<a href="administration">Add new Article </a>
+echo $this->tag->linkTo(
+    "administration",
+    "Add new Article"
+);
