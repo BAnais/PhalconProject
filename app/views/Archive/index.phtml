@@ -1,12 +1,17 @@
 <h2> Article Archive</h2>
 
-<p>Publication Date</p> <p> Title of the article</p>
-  <p>Content of the Article</p>
+<p>Publication Date</p>
+<p> Title of the article</p>
+<p>Content of the Article</p>
 
 
   <?php
   $articleNumber = 5;
   echo $articleNumber.($articleNumber>1 ? ' articles ' : ' article ').' in total. ';
-   ?>
 
-<a href="homepage">Return to HomePage</a>
+echo $this->tag->linkTo(
+    "homepage",
+    "Return to HomePage"
+);
+
+?>
