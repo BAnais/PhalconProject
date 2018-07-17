@@ -7,6 +7,7 @@ use Phalcon\Mvc\View\Engine\Volt as VoltEngine;
 use Phalcon\Mvc\Model\Metadata\Memory as MetaDataAdapter;
 use Phalcon\Session\Adapter\Files as SessionAdapter;
 use Phalcon\Flash\Direct as Flash;
+use Phalcon\Security;
 
 /**
  * Shared configuration service
@@ -110,3 +111,12 @@ $di->setShared('session', function () {
 
     return $session;
 });
+
+
+$di->set('security', function(){
+    $security = new Security();
+    // Set the password hashing factor to 12 rounds
+    // higher, means better security but slower performance
+    $security->setWorkFactor(12);
+    return $security;
+}, true);
