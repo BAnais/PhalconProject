@@ -1,5 +1,7 @@
 <?php
 use Phalcon\Di\FactoryDefault;
+use Phalcon\Mvc\Url as UrlProvider;
+use Phalcon\Db\Adapter\Pdo\Mysql as DbAdapter;
 
 error_reporting(E_ALL);
 
@@ -14,6 +16,17 @@ try {
      */
     $di = new FactoryDefault();
 
+    $di->set('db', function()
+    {
+      return new DbAdapter(
+        [
+          'host'    => 'localhost',
+          'username'=> 'root',
+          'password'=> '',
+          'dbname'  => 'phalconbase',
+        ]
+      );
+    });
     /**
      * Handle routes
      */
@@ -24,6 +37,15 @@ try {
      */
     include APP_PATH . '/config/services.php';
 
+    // Setup a base URI
+    $di->set(
+        'url',
+        function () {
+            $url = new UrlProvider();
+            $url->setBaseUri('/');
+            return $url;
+        }
+    );
     /**
      * Get config service for use in inline setup below
      */
