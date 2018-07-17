@@ -11,30 +11,36 @@ class CreateUserController extends \Phalcon\Mvc\Controller
     public function createUserAction()
     {
 
-        $user = new Users();
+      $user = new Users();
 
-        $user->userName = $this->request->getPost("userName");
-        $user->userPassword = $this->request->getPost("userPassword");
+      $user->userName = $this->request->getPost("userName");
+      $user->userPassword = $this->request->getPost("userPassword");
 
-        // Store the password hashed
-        $user->userPassword = $this->security->hash($user->userPassword);
-        if (!$user->save()) {
-          foreach ($user->getMessages() as $message) {
-              $this->flash->error($message);
-          }
-
+      // Store the password hashed
+      $user->userPassword = $this->security->hash($user->userPassword);
+      if(!Users::findFirstByuserName($user->userName)){
+        if ($user->save()) {
+          $this->flash->success("user was created successfully");
           return $this->dispatcher->forward(array(
-              "controller" => "createUser",
-              "action" => "index"
+            "controller" => "signin",
+            "action" => "index"
           ));
-      }
-
-      $this->flash->success("user was created successfully");
-
-      return $this->dispatcher->forward(array(
-          "controller" => "signin",
+        }else {
+          foreach ($user->getMessages() as $message) {
+            $this->flash->error($message);
+          }
+          return $this->dispatcher->forward(array(
+            "controller" => "createUser",
+            "action" => "index"
+          ));
+        }
+      }else {
+        $this->flash->error("user already exist");
+        return $this->dispatcher->forward(array(
+          "controller" => "createUser",
           "action" => "index"
-      ));
+        ));
+      }
 
 
       }
