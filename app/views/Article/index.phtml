@@ -6,4 +6,8 @@
 
 <h4>Published on :  Publication Date</h4>
 
-<a href="homepage">Return to HomePage</a>
+<?php 
+echo $this->tag->linkTo(
+    "homepage",
+    "Return to HomePage"
+);
