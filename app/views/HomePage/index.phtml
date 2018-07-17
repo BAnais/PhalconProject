@@ -3,5 +3,8 @@
   <p>Content of the Article</p>
 
 
-
-<a href="archive">Article Archive </a>
+<?php echo $this->tag->linkTo(
+    "archive",
+    "Article Archive"
+);
+?>
