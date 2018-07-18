@@ -1,13 +1,38 @@
 <h2> Article Archive</h2>
-
-<p>Publication Date</p>
-<p> Title of the article</p>
-<p>Content of the Article</p>
-
-
+<table border="1">
   <?php
-  $articleNumber = 5;
-  echo $articleNumber.($articleNumber>1 ? ' articles ' : ' article ').' in total. ';
+  for($x=0; $x<$articles->count();$x++){
+  ?>
+    <tr >
+      <tr>
+        <tr>
+          <td>
+            <?php
+              echo $date=date_format(date_create($articles[$x]->publicationDate), 'd F Y');
+            ?>
+          </td>
+          <td>
+            <?php
+              print($articles[$x]->title);
+            ?>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+          <?php
+            print($articles[$x]->summary);
+          ?>
+          </td>
+        </tr>
+      </tr>
+    </tr>
+  <?php
+  }
+  ?>
+</table>
+  <?php
+    $articleNumber= $articles->count() ;
+  echo $articleNumber.($articleNumber>1 ? ' articles ' : ' article ').' in total. </br> ';
 
 echo $this->tag->linkTo(
     "homepage",
