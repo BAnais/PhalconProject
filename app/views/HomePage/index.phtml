@@ -6,21 +6,29 @@
       <tr>
         <tr>
           <td>
-            <?php
-              echo $date=date_format(date_create($articles[$x]->publicationDate), 'd F');
-            ?>
+            <h5>
+              <?php
+                echo $date=date_format(date_create($articles[$x]->publicationDate), 'd F');
+              ?>
+            </h5>
           </td>
           <td>
-            <?php
-              print($articles[$x]->title);
-            ?>
+            <h2>
+              <a href="/article/"<?php print($articles[$x]->id) ?>>
+                <?php
+                print($articles[$x]->title);
+                ?>
+              </a>
+            </h2>
           </td>
         </tr>
         <tr>
           <td colspan="2">
-          <?php
-            print($articles[$x]->summary);
-          ?>
+            <h3>
+              <?php
+                print($articles[$x]->summary);
+              ?>
+            </h3>
           </td>
         </tr>
       </tr>
