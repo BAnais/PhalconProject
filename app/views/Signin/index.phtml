@@ -1,15 +1,15 @@
 <?php
 
- echo $this->tag->form("articles"); ?>
-
+ echo $this->tag->form("signin/login"); ?>
+ <h2>Sign in using this form</h2>
     <p>
         <label for="userName">Username</label>
         <?php echo $this->tag->textField("userName"); ?>
     </p>
 
     <p>
-        <label for="pwd">Password</label>
-        <?php echo $this->tag->passwordField("pwd"); ?>
+        <label for="userPassword">Password</label>
+        <?php echo $this->tag->passwordField("userPassword"); ?>
     </p>
 
     <p>
@@ -17,3 +17,10 @@
     </p>
 
 </form>
+<?php
+
+echo $this->tag->linkTo(
+    "createUser",
+    "Create User"
+);
+ ?>
