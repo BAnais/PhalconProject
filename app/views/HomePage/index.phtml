@@ -1,45 +1,38 @@
-<table border="1">
-  <?php
-  for($x=0; $x<$articles->count();$x++){
-  ?>
-    <tr >
-      <tr>
-        <tr>
-          <td>
-            <h5>
-              <?php
-                echo $date=date_format(date_create($articles[$x]->publicationDate), 'd F');
-              ?>
-            </h5>
-          </td>
-          <td>
-            <h2>
-              <a href="/article/<?php print($articles[$x]->id) ?>">
-                <?php
-                print($articles[$x]->title);
-                ?>
-              </a>
-            </h2>
-          </td>
-        </tr>
-        <tr>
-          <td colspan="2">
-            <h3>
-              <?php
-                print($articles[$x]->summary);
-              ?>
-            </h3>
-          </td>
-        </tr>
-      </tr>
-    </tr>
-  <?php
+<div class="row">
+  <div class="col-xs-9 ">
+    <?php
+    for($x=0; $x<($articles->count()<5 ? $articles->count() : 5 );$x++){
+      ?>
+    <div class="row">
+      <div class="col-xs-2">
+        <h5>
+          <?php
+          echo $date=date_format(date_create($articles[$x]->publicationDate), 'd F');
+          ?>
+        </h5>
+      </div>
+      <div class="col-xs-10 ">
+        <h2>
+          <a href="/article/<?php print($articles[$x]->id) ?>">
+            <?php
+            print($articles[$x]->title);
+            ?>
+          </a>
+        </h2>
+        <h3>
+          <?php
+          print($articles[$x]->summary);
+          ?>
+        </h3>
+      </div>
+    </div>
+    <?php
   }
-  ?>
-</table>
-<?php
- echo $this->tag->linkTo(
+
+  echo $this->tag->linkTo(
     "archive",
     "Article Archive"
-);
-?>
+  );
+  ?>
+  </div>
+</div>
