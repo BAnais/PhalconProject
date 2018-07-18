@@ -1,12 +1,12 @@
-<h2>Title of the Article</h2>
+<h2><?php print($articles->title) ?></h2>
 
-<p>
-  Content of the Article
-</p>
+<h3>
+  <?php print($articles->content) ?>
+</h3>
 
-<h4>Published on :  Publication Date</h4>
+<h5>Published on :  <?php   echo $date=date_format(date_create($articles->publicationDate), 'd F Y'); ?></h5>
 
-<?php 
+<?php
 echo $this->tag->linkTo(
     "homepage",
     "Return to HomePage"
