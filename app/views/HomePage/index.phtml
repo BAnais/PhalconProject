@@ -1,9 +1,36 @@
-
-<p>Publication Date</p> <p> Title of the article</p>
-  <p>Content of the Article</p>
-
-
-<?php echo $this->tag->linkTo(
+<table border="1">
+  <?php
+  for($x=0; $x<$articles->count();$x++){
+  ?>
+    <tr >
+      <tr>
+        <tr>
+          <td>
+            <?php
+              echo $date=date_format($date=date_create($articles[$x]->publicationDate), 'd F');
+            ?>
+          </td>
+          <td>
+            <?php
+              print($articles[$x]->title);
+            ?>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+          <?php
+            print($articles[$x]->summary);
+          ?>
+          </td>
+        </tr>
+      </tr>
+    </tr>
+  <?php
+  }
+  ?>
+</table>
+<?php
+ echo $this->tag->linkTo(
     "archive",
     "Article Archive"
 );
