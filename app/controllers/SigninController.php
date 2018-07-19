@@ -5,7 +5,9 @@ class SigninController extends ControllerBase
 
   public function indexAction()
   {
-
+    if($this->session->get('auth')){
+      return $this->response->redirect("articles")->send();
+    }
   }
 //hasing and salting https://crackstation.net/hashing-security.htm
 
@@ -29,20 +31,19 @@ class SigninController extends ControllerBase
         //  echo "log in";
           $this->session->set('auth', "yes");
           $this->session->set('userName', $user->userName);
+          $this->session->remove('errorLog');
 
           return $this->response->redirect("articles")->send();
 
         } else {
           echo "failed";
-
-          return $this->response->redirect("signin/failed")->send();
-
-
+          $this->session->set('errorLog', 'errorPwd');
+          return $this->response->redirect("signin")->send();
         }
       } else {
         echo "not found";
-        //return $this->dispatcher->forward(array("controller" => "signin", "action" => "notfound"));
-        //  $this->security->hash(rand());
+        $this->session->set('errorLog', 'errorUserN');
+        return $this->response->redirect("signin")->send();
       }
     }
   }
