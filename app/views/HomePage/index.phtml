@@ -2,11 +2,12 @@
 echo Phalcon\Tag::stylesheetLink("css/bootstrap.css");
 echo Phalcon\Tag::stylesheetLink("css/style.css");
  ?>
-  <div class="col-xs-12 ">
+  <div class="col-xs-12">
     <?php
     for($x=0; $x<($articles->count()<5 ? $articles->count() : 5 );$x++){
       ?>
-    <div class="row ">
+    <div class="row box">
+      <a href="/article/<?php print($articles[$x]->id) ?>" class="click">
       <div class="row article">
         <div class="col-xs-2 publicationDate">
           <?php
@@ -14,11 +15,9 @@ echo Phalcon\Tag::stylesheetLink("css/style.css");
           ?>
       </div>
       <div class="col-xs-7 title">
-          <a href="/article/<?php print($articles[$x]->id) ?>" class="title">
             <?php
             print($articles[$x]->title);
             ?>
-          </a>
       </div>
       </div>
         <div class="row ">
@@ -28,6 +27,7 @@ echo Phalcon\Tag::stylesheetLink("css/style.css");
           ?>
       </div>
       </div>
+    </a>
     </div>
     <?php
     }
