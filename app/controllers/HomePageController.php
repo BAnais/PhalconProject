@@ -8,6 +8,7 @@ class HomePageController extends ControllerBase
       $this->assets->addCss('css/style.css',false);
       $this->assets->addCss('css/bootstrap.css',false);
       $this->assets->addJs('js/jquery.js',false);
+      $this->assets->addJs('js/script.js',false);
       $this->assets->addJs('js/bootstrap.js',false);
 
 
