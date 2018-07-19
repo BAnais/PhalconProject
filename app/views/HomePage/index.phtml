@@ -1,38 +1,43 @@
-<div class="row">
-  <div class="col-xs-9 ">
+<?php
+echo Phalcon\Tag::stylesheetLink("css/bootstrap.css");
+echo Phalcon\Tag::stylesheetLink("css/style.css");
+ ?>
+  <div class="col-xs-12 ">
     <?php
     for($x=0; $x<($articles->count()<5 ? $articles->count() : 5 );$x++){
       ?>
-    <div class="row">
-      <div class="col-xs-2">
-        <h5>
+    <div class="row ">
+      <div class="row article">
+        <div class="col-xs-2 publicationDate">
           <?php
-          echo $date=date_format(date_create($articles[$x]->publicationDate), 'd F');
+          echo $date=strtoupper(date_format(date_create($articles[$x]->publicationDate), 'd F'));
           ?>
-        </h5>
       </div>
-      <div class="col-xs-10 ">
-        <h2>
-          <a href="/article/<?php print($articles[$x]->id) ?>">
+      <div class="col-xs-7 title">
+          <a href="/article/<?php print($articles[$x]->id) ?>" class="title">
             <?php
             print($articles[$x]->title);
             ?>
           </a>
-        </h2>
-        <h3>
+      </div>
+      </div>
+        <div class="row ">
+          <div class="col-xs-8 col-xs-offset-2 summary">
           <?php
           print($articles[$x]->summary);
           ?>
-        </h3>
+      </div>
       </div>
     </div>
     <?php
-  }
-
-  echo $this->tag->linkTo(
-    "archive",
-    "Article Archive"
-  );
-  ?>
+    }
+    ?>
+    <div class="row">
+    <?php
+      echo $this->tag->linkTo(
+        "archive",
+        "Article Archive"
+      );
+      ?>
+    </div>
   </div>
-</div>
