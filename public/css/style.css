@@ -1,9 +1,96 @@
+html{
+  background-color:           rgba(0, 150, 170, 1);
+}
+
+body{
+  margin :                     2% 10% 10% 10%;
+  padding :                    2% 2% 2% 2%;
+  border:                      2px  solid white;
+  border-radius:               5px;
+}
+
 .line-separator{
+  margin :                     3% 0 4% 0;
   height:                      1px;
-  background:                  #717171;
-  border-bottom:               1px solid #313030;
-  width:                       80%;
-/*  margin-left :                10%;*/
-  margin-top:                  2%;
-  margin-bottom:               2%;
+  width:                       100%;
+  border-bottom:               1px solid rgba(0, 150, 170, 1);
+;
+}
+
+.errorMessage{
+  margin :                     0 1% 5% 1%;
+  padding:                     1% 0 1% 1% ;
+  color:                       white;
+  background-color:            red;
+  border :                     1px solid black;
+  border-radius:               5px;
+  box-shadow:                  3px 3px 3px grey;
+}
+
+.logFields{
+  display:                     flex;
+  justify-content:             flex-end;
+  margin :                     0 2% 5% 2%;
+  padding:                     0 0 0 0;
+}
+
+.input{
+  width:                       75%;
+  border:                      1px solid black;
+  border-radius:               5px;
+}
+.input:focus{
+  border:                      2px solid orange;
+}
+
+.boxLog{
+  padding :                    8% 1% 5% 1%;
+  background-color:            rgba(255, 244, 210 , 1);
+  border:                      1px solid black;
+  border-radius:               5px;
+  box-shadow:                  1px 1px 1px 1px grey;
+
+}
+
+.button{
+  width:                       100%;
+  padding:                     3% 3% 3% 3% ;
+  color:                       white;
+  background-color:            rgba(255, 120, 75, 1);
+  border :                     1px solid black;
+  border-radius:               5px;
+  box-shadow:                  1px 1px 1px 1px grey;
+}
+
+.button:hover{
+  background-color :           rgba(255, 120, 75, 0.5);
+}
+
+.title{
+  font-size:                   140%;
+  color:                       rgba(225, 195, 0, 1);
+}
+
+#articleTit.title{
+  color :                     rgba(255, 120, 75, 1);
+  margin-bottom:              5%;
+}
+
+.publicationDate{
+  color :                     rgba(255, 120, 75, 1);
+  font-weight:                bold;
+  align-self:                 flex-end;
+  padding-right:              0;
+  margin-bottom:              2%;
+}
+
+#articleSum.summary{
+  font-style:                 italic;
+
+}
+.content{
+  margin-bottom:              3%;
+}
+.article{
+  display:                   flex;
 }
