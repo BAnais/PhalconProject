@@ -13,13 +13,12 @@
     <body>
       <header>
         <?php
-        echo $this->tag->image(
-          [
-            "img/",
-            "alt" => "DTT_logo",
-          ]
-        );
-        ?>
+          echo $this->tag->linkTo(array(
+            "homepage",
+            $this->tag->image([
+                "img/DTT_logo.png",
+                "alt" => "DTT_logo",
+              ]))); ?>
         <div class="line-separator"></div>
       </header>
       <div class="container-fluid">
