@@ -28,6 +28,7 @@ class SigninController extends ControllerBase
         // if($userP->userPassword == $user->userPassword){
         //  echo "log in";
           $this->session->set('auth', "yes");
+          $this->session->set('userName', $user->userName);
 
           return $this->response->redirect("articles")->send();
 
