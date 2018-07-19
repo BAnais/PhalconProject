@@ -1,13 +1,23 @@
-<h2><?php print($articles->title) ?></h2>
-
-<h3>
-  <?php print($articles->content) ?>
-</h3>
-
-<h5>Published on :  <?php   echo $date=date_format(date_create($articles->publicationDate), 'd F Y'); ?></h5>
+<?php
+echo Phalcon\Tag::stylesheetLink("css/bootstrap.css");
+echo Phalcon\Tag::stylesheetLink("css/style.css");
+ ?>
+<div class="title" id="articleTit">
+  <?php print($articles->title) ?>
+</div>
+<div class="summary" id="articleSum">
+    <?php print($articles->summary) ?>
+</div>
+<div class="content">
+    <?php print($articles->content) ?>
+</div>
+<div class="publicationDate">
+  PUBLISHED ON :  <?php   echo $date=strtoupper(date_format(date_create($articles->publicationDate), 'd F Y')); ?>
+</div>
 
 <?php
 echo $this->tag->linkTo(
     "homepage",
     "Return to HomePage"
 );
+?>
