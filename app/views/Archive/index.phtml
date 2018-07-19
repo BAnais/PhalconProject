@@ -1,31 +1,32 @@
 <?php
 echo Phalcon\Tag::stylesheetLink("css/bootstrap.css");
 echo Phalcon\Tag::stylesheetLink("css/style.css");
-echo Phalcon\Tag::javascriptInclude("js/script.js");
  ?>
-  <h2> Article Archive</h2>
+ <div class="title" id="articleTit">
+   <h2> Article Archive</h2>
+ </div>
     <?php
     for($x=0; $x<$articles->count();$x++){
       ?>
-    <div class="row">
-      <div class="col-xs-2 col-xs-offset-2">
-        <h4>
+      <div class="row box">
+        <div class="row article">
+          <div class="col-xs-2  publicationDate" id="art">
         <?php
-        echo $date=date_format(date_create($articles[$x]->publicationDate), 'd F Y');
+        echo $date=strtoupper(date_format(date_create($articles[$x]->publicationDate), 'd F Y'));
         ?>
-      </h4>
       </div>
-      <div class="col-xs-8 col-xs-offset-4">
-        <h2>
+      <div class="col-xs-7 title">
         <?php
         print($articles[$x]->title);
         ?>
-      </h2>
-      <h3>
+      </div>
+      </div>
+        <div class="row ">
+          <div class="col-xs-8 col-xs-offset-2 summary">
         <?php
         print($articles[$x]->summary);
         ?>
-      </h3>
+      </div>
       </div>
     </div>
     <?php
