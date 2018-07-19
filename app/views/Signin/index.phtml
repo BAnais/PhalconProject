@@ -7,8 +7,9 @@ echo Phalcon\Tag::stylesheetLink("css/style.css");
    <div class="col-xs-8 col-xs-offset-2 boxLog">
      <?php
      if($this->session->get("errorLog")=='errorPwd' || $this->session->get("errorLog")=='errorUserN' ){
+       $this->session->remove('errorLog');
        ?>
-       <div class="ol-xs-8  errorMessage">
+       <div class="errorMessage">
          Incorrect username or Password. Please try again.
        </div>
      <?php
@@ -33,7 +34,7 @@ echo Phalcon\Tag::stylesheetLink("css/style.css");
     </div>
   </div>
 <?php
-$this->tag->endForm();
+echo $this->tag->endForm();
 echo $this->tag->linkTo(
     "createUser",
     "Create User"
