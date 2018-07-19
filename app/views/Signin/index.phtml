@@ -1,24 +1,39 @@
 <?php
+echo Phalcon\Tag::stylesheetLink("css/bootstrap.css");
+echo Phalcon\Tag::stylesheetLink("css/style.css");
 
  echo $this->tag->form("signin/login"); ?>
- <h2>Sign in using this form</h2>
-    <p>
-        <label for="userName">Username</label>
-        <?php echo $this->tag->textField("userName"); ?>
-    </p>
+ <div class="row">
+   <div class="col-xs-8 col-xs-offset-2 boxLog">
+     <?php
+     if($this->session->get("errorLog")=='errorPwd' || $this->session->get("errorLog")=='errorUserN' ){
+       ?>
+       <div class="ol-xs-8  errorMessage">
+         Incorrect username or Password. Please try again.
+       </div>
+     <?php
+      }
+      ?>
+      <div class="row">
+        <div class="col-xs-2 logFields">
+          <label for="userName">Username</label>
+        </div>
+          <?php echo $this->tag->textField(["userName", 'class'=>'input', "placeholder"=> "Your admin username"]); ?>
+      </div>
 
-    <p>
-        <label for="userPassword">Password</label>
-        <?php echo $this->tag->passwordField("userPassword"); ?>
-    </p>
-
-    <p>
-        <?php echo $this->tag->submitButton("Login"); ?>
-    </p>
-
-</form>
+      <div class="row">
+        <div class="col-xs-2 logFields">
+          <label for="userPassword">Password</label>
+        </div>
+        <?php echo $this->tag->passwordField(["userPassword", 'class'=>'input', "placeholder"=> "Your admin password"]); ?>
+      </div>
+      <div class="col-xs-4 col-xs-offset-4">
+        <?php echo $this->tag->submitButton(["Login", 'class'=>'button']); ?>
+      </div>
+    </div>
+  </div>
 <?php
-
+$this->tag->endForm();
 echo $this->tag->linkTo(
     "createUser",
     "Create User"
