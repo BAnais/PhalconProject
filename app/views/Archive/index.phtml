@@ -1,42 +1,42 @@
-<h2> Article Archive</h2>
-<table border="1">
-  <?php
-  for($x=0; $x<$articles->count();$x++){
-  ?>
-    <tr >
-      <tr>
-        <tr>
-          <td>
-            <?php
-              echo $date=date_format(date_create($articles[$x]->publicationDate), 'd F Y');
-            ?>
-          </td>
-          <td>
-            <?php
-              print($articles[$x]->title);
-            ?>
-          </td>
-        </tr>
-        <tr>
-          <td colspan="2">
-          <?php
-            print($articles[$x]->summary);
-          ?>
-          </td>
-        </tr>
-      </tr>
-    </tr>
-  <?php
+<?php
+echo Phalcon\Tag::stylesheetLink("css/bootstrap.css");
+echo Phalcon\Tag::stylesheetLink("css/style.css");
+echo Phalcon\Tag::javascriptInclude("js/script.js");
+ ?>
+  <h2> Article Archive</h2>
+    <?php
+    for($x=0; $x<$articles->count();$x++){
+      ?>
+    <div class="row">
+      <div class="col-xs-2 col-xs-offset-2">
+        <h4>
+        <?php
+        echo $date=date_format(date_create($articles[$x]->publicationDate), 'd F Y');
+        ?>
+      </h4>
+      </div>
+      <div class="col-xs-8 col-xs-offset-4">
+        <h2>
+        <?php
+        print($articles[$x]->title);
+        ?>
+      </h2>
+      <h3>
+        <?php
+        print($articles[$x]->summary);
+        ?>
+      </h3>
+      </div>
+    </div>
+    <?php
   }
-  ?>
-</table>
-  <?php
-    $articleNumber= $articles->count() ;
-  echo $articleNumber.($articleNumber>1 ? ' articles ' : ' article ').' in total. </br> ';
 
-echo $this->tag->linkTo(
+  $articleNumber= $articles->count() ;
+    echo $articleNumber.($articleNumber>1 ? ' articles ' : ' article ').' in total. </br> ';
+
+  echo $this->tag->linkTo(
     "homepage",
     "Return to HomePage"
-);
+  );
 
-?>
+  ?>
