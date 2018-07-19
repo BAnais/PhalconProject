@@ -5,13 +5,9 @@ class HomePageController extends ControllerBase
 
     public function indexAction()
     {
-      $this->assets->addCss('css/style.css',false);
-      $this->assets->addCss('css/bootstrap.css',false);
-      $this->assets->addJs('js/jquery.js',false);
-      $this->assets->addJs('js/script.js',false);
-      $this->assets->addJs('js/bootstrap.js',false);
-
-
+      if($this->session->get('auth')){
+        return $this->response->redirect("articles")->send();
+      }
       $this->view->articles = Articles::find([
         "order"=> "publicationDate DESC",
       ]);
