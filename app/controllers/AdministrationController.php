@@ -6,8 +6,12 @@ class AdministrationController extends ControllerBase
     public function indexAction()
     {
       if(!$this->session->get('auth')){
-        return $this->dispatcher->forward(array('controller' => "signin", 'action'=> "login" ));
+        return $this->response->redirect("signin")->send();
       }
+      $this->view->userName = $this->session->get('userName');
+      $this->view->articles = Articles::find([
+        "order"=> "publicationDate DESC",
+      ]);
     }
 
   public function registerAction()
@@ -26,13 +30,13 @@ class AdministrationController extends ControllerBase
     );
 
     if($success){
-      echo "Success";
-      return $this->dispatcher->forward(array('controller' => "articles", 'action'=> "index" ));
+      $this->session->set('errorPost');
+      return $this->response->redirect("articles")->send();
+
 
     }else{
-      echo "Sorry the following problems were generated : ";
-      return $this->dispatcher->forward(array('controller' => "articles", 'action'=> "index" ));
-
+      $this->session->set('errorPost', 'error');
+      return $this->response->redirect("administration")->send();
 
       $messages = $article->getMessages();
 
@@ -41,6 +45,11 @@ class AdministrationController extends ControllerBase
       }
     }
     $this->view->disable();
+  }
+
+  public function EditAction()
+  {
+    // code...
   }
 
 }
