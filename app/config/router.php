@@ -59,4 +59,31 @@ $router->add(
     "action"=>"homepage"
   ]
 );
+
+$router->add(
+  "/signin",
+  [
+    "controller"=>"signin",
+    "action"=>"index"
+  ]
+);
+$router->add(
+  "/homepage",
+  [
+    "controller"=>"articles",
+    "action"=>"list",
+    "params"=>"homepage"
+  ]
+);
+$router->add(
+  "/archive",
+  [
+    "controller"=>"articles",
+    "action"=>"list",
+    "params"=>"archive"
+  ]
+);
+
+
+
 $router->handle();
