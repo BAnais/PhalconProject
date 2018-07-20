@@ -22,4 +22,12 @@ $router->add(
   "params"=>1]
 );
 
+$router->add(
+  "articles/edit/{id}",
+  [
+    "controller"=>"articles",
+    "action"=>"edit",
+    "params"=>1
+  ]
+);
 $router->handle();
