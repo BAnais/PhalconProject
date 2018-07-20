@@ -2,7 +2,10 @@
 use Phalcon\Filter;
 class ArticlesController extends ControllerBase
 {
-
+    /*
+    * indexAction check if the user is auth as admin
+    * and send to the view a list of all the articles store in the DB
+    */
     public function indexAction()
     {
       if(!$this->session->get('auth')){
@@ -15,7 +18,11 @@ class ArticlesController extends ControllerBase
     }
 
     /**
-     * Creates an Article
+     * createAction checks if user is logged in
+     *  Edits Article
+     * Creates an Article if doesn't exist
+     *  sanitize all sent informations
+     *  check if all form fields are not empty
      */
     public function createAction(){
       $filter = new Filter();
@@ -66,12 +73,16 @@ class ArticlesController extends ControllerBase
     }
 
     /**
+     * editAction sends to the edit view informations about an article according to an @param id
      *
      * @param string $id
      */
     public function editAction($id)
     {
-        if (!$this->request->isPost()) {
+      if(!$this->session->get('auth')) {
+        return $this->response->redirect("signin")->send();
+      }
+        if (!$this->request->getPost()) {
 
             $article = Articles::findFirstByid($id);
             if (!$article) {
@@ -84,7 +95,6 @@ class ArticlesController extends ControllerBase
 
                 return;
             }
-
             $this->view->pick('articles/create');
             $this->view->id = $article->id;
             $this->tag->setDefault("id", $article->id);
@@ -96,7 +106,7 @@ class ArticlesController extends ControllerBase
     }
 
     /**
-     * Deletes a Article
+     * Deletes article identified by an @param id
      *
      * @param string $id
      */
@@ -127,21 +137,26 @@ class ArticlesController extends ControllerBase
         return $this->response->redirect("articles")->send();
 
     }
+
+    /*
+    * articleAction gets data from the Model according to an id
+    * and sends it to the view as @Articles $articles
+    *
+    * @param string $id : article id
+    */
     public function articleAction($id)
     {
         $this->view->articles = Articles::findFirst($id);
     }
 
-    public function archiveAction()
+    /*
+    * listAction picks a view according to the @param $page received
+    * gets data from the Model depending on the publication DESC
+    * and sends it to the view as @Articles $article
+    */
+    public function listAction($page)
     {
-
-      $this->view->articles = Articles::find([
-        "order"=> "publicationDate DESC",
-      ]);
-    }
-    public function homepageAction()
-    {
-
+      $this->view->pick("articles/" . $page);
       $this->view->articles = Articles::find([
         "order"=> "publicationDate DESC",
       ]);
