@@ -5,7 +5,8 @@ echo Phalcon\Tag::stylesheetLink("css/style.css");
 echo $this->tag->form("articles/create");?>
 
 <div class="title" id="articleTit">
-<h2>New Article</h2>
+
+<h2><?php echo $this->request->getPost('id')? 'New Article' : 'Edit Article' ?></h2>
 </div>
   <div class="row">
     <div class=" boxLog" id="posts">
@@ -81,3 +82,7 @@ echo $this->tag->form("articles/create");?>
 
 <?php
 echo $this->tag->endForm();
+
+echo $this->request->getPost('id')? '' :  $this->tag->linkTo(["Articles/delete/" .  $id , "Delete"]);;
+
+?>
