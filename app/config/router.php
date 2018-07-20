@@ -4,22 +4,27 @@ $router = $di->getRouter();
 
 // Define your routes here
 $router->add(
-  "/checkToken/{goal}",
-  ["controller"=>"signin",
-  "action"=>"check",
-  "params"=> 1 ]
+  "/logout",
+  [
+    "controller"=>"signin",
+    "action"=>"logout"
+  ]
 );
-
-$router->add("/logout",
-  ["controller"=>"signin",
-  "action"=>"logout"]
+$router->add(
+  "/createuser",
+  [
+    "controller"=>"signin",
+    "action"=>"createuser"
+  ]
 );
 
 $router->add(
   "/article/{id}",
-  ["controller"=>"article",
-  "action"=>"index",
-  "params"=>1]
+  [
+    "controller"=>"articles",
+    "action"=>"article",
+    "params"=>1
+  ]
 );
 
 $router->add(
@@ -28,6 +33,22 @@ $router->add(
     "controller"=>"articles",
     "action"=>"edit",
     "params"=>1
+  ]
+);
+
+$router->add(
+  "/archive",
+  [
+    "controller"=>"articles",
+    "action"=>"archive"
+  ]
+);
+
+$router->add(
+  "/homepage",
+  [
+    "controller"=>"articles",
+    "action"=>"homepage"
   ]
 );
 $router->handle();
