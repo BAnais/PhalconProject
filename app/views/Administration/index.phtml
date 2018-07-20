@@ -1,0 +1,78 @@
+<?php
+echo Phalcon\Tag::stylesheetLink("css/bootstrap.css");
+echo Phalcon\Tag::stylesheetLink("css/style.css");
+
+echo $this->tag->form("administration/register"); ?>
+<div class="title" id="articleTit">
+<h2>New Article</h2>
+</div>
+  <div class="row">
+    <div class=" boxLog" id="posts">
+        <?php
+        if($this->session->get("errorPost")=='error'){
+        $this->session->remove('errorPost');
+        ?>
+      <div class=" errorMessage">
+      Invalid post. Please try again.
+      </div>
+        <?php
+        }
+        ?>
+    <div class="row">
+      <div class=" col-xs-2 logFields">
+        <label for="title " class="">Title</label>
+      </div>
+      <?php echo $this->tag->textField(
+      [
+      'title',
+      'placeholder' => 'Name of the Article',
+      'class'=>'input', "autocomplete" => "off"
+      ]); ?>
+    </div>
+    <div class="row">
+      <div class="col-xs-2 logFields">
+        <label for="summary" class="">Summary</label>
+      </div>
+      <?php echo $this->tag->textField(
+      [
+      'summary',
+      'placeholder' => 'Summary here',
+       'class'=>'input', "autocomplete" => "off"
+      ]); ?>
+    </div>
+    <div class="row">
+      <div class="col-xs-2 logFields">
+        <label for="content" class="">Content</label>
+      </div>
+      <?php echo $this->tag->textArea(
+      [
+      'content',
+      'placeholder' => 'Write the content here',
+      "rows" => 20,
+      'class'=>'input', "autocomplete" => "off",
+      'id' => 'areaPost'
+      ]); ?>
+    </div>
+    <div class="row">
+      <div class="col-xs-2 logFields">
+        <label for="publicationDate">Publication Date</label>
+      </div>
+      <?php echo $this->tag->dateField(["publicationDate", 'class'=>'input']); ?>
+      </div>
+<div class="row">
+
+      <div class="col-xs-3 col-xs-offset-3">
+      <?php echo $this->tag->submitButton(["Save Changes","class" => "button"]);
+      ?>
+    </div>
+    <div class="col-xs-3">
+      <a href="articles">
+        <button type="button" class="button">Cancel</button>
+      </a>
+    </div>
+  </div>
+    </div>
+  </div>
+
+<?php
+echo $this->tag->endForm();

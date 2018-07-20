@@ -1,0 +1,43 @@
+<?php
+echo Phalcon\Tag::stylesheetLink("css/bootstrap.css");
+echo Phalcon\Tag::stylesheetLink("css/style.css");
+ ?>
+ <div class="title" id="articleTit">
+   <h2> Article Archive</h2>
+ </div>
+    <?php
+    for($x=0; $x<$articles->count();$x++){
+      ?>
+      <div class="row box">
+        <div class="row article">
+          <div class="col-xs-2  publicationDate" id="art">
+        <?php
+        echo $date=strtoupper(date_format(date_create($articles[$x]->publicationDate), 'd F Y'));
+        ?>
+      </div>
+      <div class="col-xs-7 title">
+        <?php
+        print($articles[$x]->title);
+        ?>
+      </div>
+      </div>
+        <div class="row ">
+          <div class="col-xs-8 col-xs-offset-2 summary">
+        <?php
+        print($articles[$x]->summary);
+        ?>
+      </div>
+      </div>
+    </div>
+    <?php
+  }
+
+  $articleNumber= $articles->count() ;
+    echo $articleNumber.($articleNumber>1 ? ' articles ' : ' article ').' in total. </br> ';
+
+  echo $this->tag->linkTo(
+    "homepage",
+    "Return to HomePage"
+  );
+
+  ?>
