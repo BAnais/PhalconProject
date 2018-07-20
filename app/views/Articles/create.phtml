@@ -6,7 +6,10 @@ echo $this->tag->form("articles/create");?>
 
 <div class="title" id="articleTit">
 
-<h2><?php echo $this->request->getPost('id')? 'New Article' : 'Edit Article' ?></h2>
+<h2><?php if ($this->request->getPost('id')!==""){
+  echo 'Edit article';}else {
+    'New article';
+  } ?></h2>
 </div>
   <div class="row">
     <div class=" boxLog" id="posts">
@@ -72,7 +75,7 @@ echo $this->tag->form("articles/create");?>
       ?>
     </div>
     <div class="col-xs-3">
-      <a href="articles">
+      <a href="/articles">
         <button type="button" class="button">Cancel</button>
       </a>
     </div>
@@ -82,7 +85,9 @@ echo $this->tag->form("articles/create");?>
 
 <?php
 echo $this->tag->endForm();
+if($this->request->getPost('id')!==""){
+  echo $this->tag->linkTo(["Articles/delete/" .  $id , "Delete"]);
+}
 
-echo $this->request->getPost('id')? '' :  $this->tag->linkTo(["Articles/delete/" .  $id , "Delete"]);;
 
 ?>
