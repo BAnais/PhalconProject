@@ -1,4 +1,5 @@
 <?php
+use Phalcon\Filter;
 
 class SigninController extends ControllerBase
 {
@@ -56,10 +57,11 @@ class SigninController extends ControllerBase
 
   public function createuserAction()
   {
+    $filter = new Filter();
     $user = new Users();
 
-    $user->userName = $this->request->getPost("userName");
-    $user->userPassword = $this->request->getPost("userPassword");
+    $user->userName = $filter->sanitize($this->request->getPost("userName"),['striptags','trim', ]);
+    $user->userPassword = $filter->sanitize($this->request->getPost("userPassword"),['striptags','trim', ]);
 
     // Store the password hashed
     $user->userPassword = $this->security->hash($user->userPassword);

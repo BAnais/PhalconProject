@@ -1,5 +1,5 @@
 <?php
-
+use Phalcon\Filter;
 class ArticlesController extends ControllerBase
 {
 
@@ -18,6 +18,7 @@ class ArticlesController extends ControllerBase
      * Creates an Article
      */
     public function createAction(){
+      $filter = new Filter();
       if(!$this->session->get('auth')) {
         return $this->response->redirect("signin")->send();
       }
@@ -25,7 +26,7 @@ class ArticlesController extends ControllerBase
         $article = Articles::findFirstByid($this->request->getPost('id'));
 
         $article->save(
-          $this->request->getPost(),
+           $filter->sanitize($this->request->getPost(),['striptags','trim', ]),
           [
             "title",
             "summary",
@@ -44,7 +45,7 @@ class ArticlesController extends ControllerBase
         $article = new Articles();
 
         $success = $article->save(
-          $this->request->getPost(),
+          $filter->sanitize($this->request->getPost(),['striptags','trim', ]),
           [
             "title",
             "summary",
