@@ -1,19 +1,28 @@
 
-<?php echo $this->tag->form("createuser"); ?>
-
-<h2>Sign up using this form</h2>
-    <p>
+<?php
+echo Phalcon\Tag::stylesheetLink("css/bootstrap.css");
+echo Phalcon\Tag::stylesheetLink("css/style.css");
+ echo $this->tag->form("createuser"); ?>
+ <h2>Sign up using this form</h2>
+<div class="row">
+  <div class="col-xs-8 col-xs-offset-2 boxLog">
+<div class="row">
+  <div class="col-xs-2 logFields">
         <label for="name">Username</label>
-        <?php echo $this->tag->textField("userName"); ?>
-    </p>
+      </div>
+        <?php echo $this->tag->textField(["userName", 'class'=>'input', "placeholder"=> "Username", "autocomplete" => "off"]); ?>
+    </div>
 
-    <p>
-        <label for="email">Password</label>
-        <?php echo $this->tag->PasswordField("userPassword"); ?>
-    </p>
-
-    <p>
-        <?php echo $this->tag->submitButton("Sign up"); ?>
-    </p>
+    <div class="row">
+      <div class="col-xs-2 logFields">
+        <label for="userPassword">Password</label>
+      </div>
+      <?php echo $this->tag->passwordField(["userPassword", 'class'=>'input', "placeholder"=> "Password"]); ?>
+    </div>
+    <div class="col-xs-4 col-xs-offset-4">
+      <?php echo $this->tag->submitButton(["Sign up", 'class'=>'button']); ?>
+    </div>
+  </div>
+</div>
 
 </form>
