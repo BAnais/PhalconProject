@@ -3,77 +3,77 @@ html{
 }
 
 body{
-  margin :                     2% 10% 10% 10%;
-  padding :                    2% 2% 2% 2%;
-  border:                      2px  solid white;
-  border-radius:               5px;
+  margin :                    2% 10% 10% 10%;
+  padding :                   2% 2% 2% 2%;
+  border:                     2px  solid white;
+  border-radius:              5px;
 }
-
+/*WITHOUT SIGNIN*/
 .line-separator{
-  margin :                     3% 0 4% 0;
-  height:                      1px;
-  width:                       100%;
-  border-bottom:               1px solid rgba(0, 150, 170, 1);
+  margin :                    3% 0 4% 0;
+  height:                     1px;
+  width:                      100%;
+  border-bottom:              1px solid rgba(0, 150, 170, 1);
 ;
 }
 
 .errorMessage{
-  margin :                     0 1% 5% 1%;
-  padding:                     1% 0 1% 1% ;
-  color:                       white;
-  background-color:            red;
-  border :                     1px solid black;
-  border-radius:               5px;
-  box-shadow:                  3px 3px 3px grey;
+  margin :                    0 1% 5% 1%;
+  padding:                    1% 0 1% 1% ;
+  color:                      white;
+  background-color:           red;
+  border :                    1px solid black;
+  border-radius:              5px;
+  box-shadow:                 3px 3px 3px grey;
 }
 
 .logFields{
-  display:                     flex;
-  justify-content:             flex-end;
-  margin :                     0 2% 5% 2%;
-  padding:                     0 0 0 0;
+  display:                    flex;
+  justify-content:            flex-end;
+  margin :                    0 2% 5% 2%;
+  padding:                    0 0 0 0;
 }
 
 .input{
-  width:                       75%;
-  border:                      1px solid black;
-  border-radius:               5px;
+  width:                      75%;
+  border:                     1px solid black;
+  border-radius:              5px;
 }
 .input:focus{
-  border:                      2px solid orange;
+  border:                     2px solid orange;
 }
 
 .boxLog{
-  padding :                    8% 1% 5% 1%;
-  background-color:            rgba(255, 244, 210 , 1);
-  border:                      1px solid black;
-  border-radius:               5px;
-  box-shadow:                  1px 1px 1px 1px grey;
+  padding :                   8% 1% 5% 1%;
+  background-color:           rgba(255, 244, 210 , 1);
+  border:                     1px solid black;
+  border-radius:              5px;
+  box-shadow:                 1px 1px 1px 1px grey;
 
 }
 
 .button{
-  width:                       100%;
-  padding:                     3% 3% 3% 3% ;
-  color:                       white;
-  background-color:            rgba(255, 120, 75, 1);
-  border :                     1px solid black;
-  border-radius:               5px;
-  box-shadow:                  1px 1px 1px 1px grey;
+  width:                      100%;
+  padding:                    3% 3% 3% 3% ;
+  color:                      white;
+  background-color:           rgba(255, 120, 75, 1);
+  border :                    1px solid black;
+  border-radius:              5px;
+  box-shadow:                 1px 1px 1px 1px grey;
 }
 
 .button:hover{
-  background-color :           rgba(255, 120, 75, 0.5);
+  background-color :          rgba(255, 120, 75, 0.5);
 }
 
 .title{
-  font-size:                   140%;
-  color:                       rgba(225, 195, 0, 1);
+  font-size:                  200%;
+  color:                      rgba(225, 195, 0, 1);
 }
 
 #articleTit.title{
   color :                     rgba(255, 120, 75, 1);
-  margin-bottom:              5%;
+  margin-bottom:              3%;
 }
 
 .publicationDate{
@@ -82,6 +82,11 @@ body{
   align-self:                 flex-end;
   padding-right:              0;
   margin-bottom:              2%;
+}
+#art.publicationDate{
+  font-size:                  85%;
+  text-align:                 right;
+  padding-top:                1%;
 }
 
 #articleSum.summary{
@@ -92,5 +97,80 @@ body{
   margin-bottom:              3%;
 }
 .article{
-  display:                   flex;
+  display:                    flex;
+}
+.box{
+  margin-bottom:              2%;
+  cursor:                     pointer;
+}
+a.click{
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+a.click:hover{
+  background-color:           rgba(240, 220, 210 , 1);
+}
+
+
+/*ADMIN*/
+.line-separatorWidget{
+  margin :                    2% 0 1% 0;
+  height:                     1px;
+  width:                      100%;
+  border-bottom:              1px solid rgba(0, 150, 170, 1);
+;
+}
+
+#widget.title{
+  font-size:                  120%;
+  font-weight:                bold;
+  margin-bottom:              1%;
+  margin-top:                 0;
+
+}
+
+.logged{
+  font-size:                  90%;
+}
+
+.Widgets{
+  margin-left:                2%;
+}
+
+.tableArticles{
+  padding:                    1% 1% 1% 1%;
+  margin:                     0 0 0 0;
+}
+#title.tableArticles{
+  background-color:           rgba(255, 120, 75, 1);
+  color :                     white;
+  font-weight:                bold;
+  border:                     1px solid rgba(0, 150, 170, 1);
+
+}
+
+.yellowBackTable{
+  background-color:           rgba(255, 244, 210 , 1);
+  padding:                    0 -15px 0 0;
+}
+
+.tableauArticles{
+  border:                     1px solid rgba(0, 150, 170, 1);
+  border-width:               0 1px 0 1px;
+  cursor: pointer;
+}
+
+#endArticles{
+  margin:                     2% 0 3% 0;
+}
+
+#areaPost{
+  resize:                     none;
+  overflow:                   scroll;
+  overflow-y:                 inherit;
+}
+
+#posts.boxLog{
+  padding-bottom:             9%;
 }
