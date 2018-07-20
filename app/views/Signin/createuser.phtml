@@ -1,0 +1,19 @@
+
+<?php echo $this->tag->form("createuser"); ?>
+
+<h2>Sign up using this form</h2>
+    <p>
+        <label for="name">Username</label>
+        <?php echo $this->tag->textField("userName"); ?>
+    </p>
+
+    <p>
+        <label for="email">Password</label>
+        <?php echo $this->tag->PasswordField("userPassword"); ?>
+    </p>
+
+    <p>
+        <?php echo $this->tag->submitButton("Sign up"); ?>
+    </p>
+
+</form>
