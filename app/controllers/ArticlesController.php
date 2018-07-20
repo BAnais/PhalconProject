@@ -126,5 +126,24 @@ class ArticlesController extends ControllerBase
         return $this->response->redirect("articles")->send();
 
     }
+    public function articleAction($id)
+    {
+        $this->view->articles = Articles::findFirst($id);
+    }
+
+    public function archiveAction()
+    {
+
+      $this->view->articles = Articles::find([
+        "order"=> "publicationDate DESC",
+      ]);
+    }
+    public function homepageAction()
+    {
+
+      $this->view->articles = Articles::find([
+        "order"=> "publicationDate DESC",
+      ]);
+    }
 }
  ?>
