@@ -21,9 +21,11 @@ class SigninController extends ControllerBase
   * if everithing is correct -> creates a session
   *
   */
-  public function loginAction() {
+  public function loginAction()
+  {
 
-    if ($this->request->getPost()) {
+    if ($this->request->getPost())
+    {
 
       $userP = new Users();
       $user = new Users();
@@ -31,22 +33,26 @@ class SigninController extends ControllerBase
       $userP->userPassword = $this->request->getPost("userPassword");
       $user = Users::findFirstByuserName($userP->userName);
 
-      if ($user) {
+      if ($user)
+      {
 
-        if ($this->security->checkHash($userP->userPassword, $user->userPassword)){
+        if ($this->security->checkHash($userP->userPassword, $user->userPassword))
+        {
 
           $this->session->set('auth', "yes");
           $this->session->set('userName', $user->userName);
           $this->session->remove('errorLog');
           return $this->response->redirect("articles")->send();
 
-        } else {
+        } else
+        {
 
           echo "failed";
           $this->session->set('errorLog', 'errorPwd');
           return $this->response->redirect("signin")->send();
         }
-      } else {
+      } else
+      {
 
         echo "not found";
         $this->session->set('errorLog', 'errorUserN');
@@ -60,7 +66,8 @@ class SigninController extends ControllerBase
   * and redirect to the homepage
   */
 
-  public function logoutAction() {
+  public function logoutAction()
+  {
      $this->session->remove('auth');
      return $this->response->redirect("homepage")->send();
   }
@@ -81,21 +88,25 @@ class SigninController extends ControllerBase
 
     // Store the password hashed
     $user->userPassword = $this->security->hash($user->userPassword);
-    if(!Users::findFirstByuserName($user->userName)){
-      if ($user->save()) {
+    if(!Users::findFirstByuserName($user->userName))
+    {
+      if ($user->save())
+      {
         $this->flash->success("user was created successfully");
         return $this->response->redirect("signin")->send();
 
-      }else {
-        foreach ($user->getMessages() as $message) {
+      } else
+      {
+        foreach ($user->getMessages() as $message)
+        {
           $this->flash->error($message);
         }
 
       }
-    }else {
+    }else
+    {
       $this->flash->error("user already exist");
 
     }
   }
 }
- ?>

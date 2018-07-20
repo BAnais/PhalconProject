@@ -1,5 +1,6 @@
 <?php
 use Phalcon\Filter;
+
 class ArticlesController extends ControllerBase
 {
     /*
@@ -24,7 +25,8 @@ class ArticlesController extends ControllerBase
      *  sanitize all sent informations
      *  check if all form fields are not empty
      */
-    public function createAction(){
+    public function createAction()
+    {
       $filter = new Filter();
       if(!$this->session->get('auth')) {
         return $this->response->redirect("signin")->send();
@@ -50,7 +52,6 @@ class ArticlesController extends ControllerBase
       }
       else if($this->request->getPost()){
         $article = new Articles();
-
         $success = $article->save(
           $filter->sanitize($this->request->getPost(),['striptags','trim', ]),
           [
@@ -60,16 +61,13 @@ class ArticlesController extends ControllerBase
             "publicationDate",
           ]
         );
-
         if($success){
           $this->session->remove('errorPost');
         }else{
           $this->session->set('errorPost', 'error');
         }
-
         return $this->response->redirect("articles")->send();
       }
-
     }
 
     /**
@@ -82,27 +80,25 @@ class ArticlesController extends ControllerBase
       if(!$this->session->get('auth')) {
         return $this->response->redirect("signin")->send();
       }
-        if (!$this->request->getPost()) {
+      else if (!$this->request->getPost()) {
+        $article = Articles::findFirstByid($id);
+        if (!$article) {
+          $this->flash->error("Article was not found");
 
-            $article = Articles::findFirstByid($id);
-            if (!$article) {
-                $this->flash->error("Article was not found");
-
-                $this->dispatcher->forward([
-                    'controller' => "Articles",
-                    'action' => 'index'
-                ]);
-
-                return;
-            }
-            $this->view->pick('articles/create');
-            $this->view->id = $article->id;
-            $this->tag->setDefault("id", $article->id);
-            $this->tag->setDefault("title", $article->title);
-            $this->tag->setDefault("summary", $article->summary);
-            $this->tag->setDefault("content", $article->content);
-            $this->tag->setDefault("publicationDate", $article->publicationDate);
+          $this->dispatcher->forward([
+              'controller' => "Articles",
+              'action' => 'index'
+          ]);
+          return;
         }
+        $this->view->pick('articles/create');
+        $this->view->id = $article->id;
+        $this->tag->setDefault("id", $article->id);
+        $this->tag->setDefault("title", $article->title);
+        $this->tag->setDefault("summary", $article->summary);
+        $this->tag->setDefault("content", $article->content);
+        $this->tag->setDefault("publicationDate", $article->publicationDate);
+      }
     }
 
     /**
@@ -112,30 +108,22 @@ class ArticlesController extends ControllerBase
      */
     public function deleteAction($id)
     {
-        $article = Articles::findFirstByid($id);
-        if (!$article) {
-            $this->flash->error("Article was not found");
-
-            return $this->response->redirect("articles")->send();
-
-
-            return;
-        }
-
-        if (!$article->delete()) {
-
-            foreach ($article->getMessages() as $message) {
-                $this->flash->error($message);
-            }
-
-
-            return;
-        }
-
-        $this->flash->success("Article was deleted successfully");
-
+      $article = Articles::findFirstByid($id);
+      if (!$article) {
+        $this->flash->error("Article was not found");
         return $this->response->redirect("articles")->send();
+      }
 
+      if (!$article->delete()) {
+        foreach ($article->getMessages() as $message) {
+            $this->flash->error($message);
+        }
+
+        return;
+      }
+
+      $this->flash->success("Article was deleted successfully");
+      return $this->response->redirect("articles")->send();
     }
 
     /*
@@ -146,7 +134,7 @@ class ArticlesController extends ControllerBase
     */
     public function articleAction($id)
     {
-        $this->view->articles = Articles::findFirst($id);
+      $this->view->articles = Articles::findFirst($id);
     }
 
     /*
@@ -162,4 +150,3 @@ class ArticlesController extends ControllerBase
       ]);
     }
 }
- ?>

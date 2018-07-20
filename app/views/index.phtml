@@ -2,70 +2,74 @@
 <html>
 
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags must come first in the head; any other head content must come after these tags -->
-    <title>Phalcon PHP Framework</title>
-    <?php
-        $this->assets->outputCss();
-         ?>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags must come first in the head; any other head content must come after these tags -->
+  <title>Phalcon PHP Framework</title>
+  <?php
+      $this->assets->outputCss();
+       ?>
 </head>
 
 <body>
-    <header>
-        <?php
-          echo $this->tag->linkTo(array(
-            "homepage",
-            $this->tag->image([
-                "img/DTT_logo.png",
-                "alt" => "DTT_logo",
-              ])));
-               if(!$this->session->get('auth')){
-              ?>
-            <div class="line-separator"></div>
-            <?php }else{
-        ?>
-            <div class="line-separatorWidget"></div>
-            <div class="Widgets">
+  <header>
+    <?php
+    echo $this->tag->linkTo(array(
+      "homepage",
+      $this->tag->image([
+        "img/DTT_logo.png",
+        "alt" => "DTT_logo",
+    ])));
 
-                <div class="title" id="widget">
-                    Widget News Admin
-                </div>
-                <div class="logged">
-                    You're logged in as
-                    <?php echo $this->session->get('userName'); ?>.
-                    <?php echo $this->tag->linkTo(
-              "logout",
-              "Log out"
+    if(!$this->session->get('auth'))
+    {
+      ?>
+      <div class="line-separator"></div>
+      <?=
+    } else
+    { ?>
+      <div class="line-separatorWidget">
+      </div>
+      <div class="Widgets">
+        <div class="title" id="widget">
+          Widget News Admin
+        </div>
+        <div class="logged">
+          You're logged in as
+          <?php echo $this->session->get('userName'); ?>.
+          <?php echo $this->tag->linkTo(
+            "logout",
+            "Log out"
           );
           ?>
-                </div>
-            </div>
-            <div class="line-separatorWidget"></div>
-            <?php
-      }  ?>
-    </header>
-    <div class="container-fluid">
-        <div class="row">
-            <?php echo $this->getContent(); ?>
         </div>
+      </div>
+      <div class="line-separatorWidget">
+      </div>
+      <?php
+    }  ?>
+  </header>
+  <div class="container-fluid">
+    <div class="row">
+      <?php echo $this->getContent(); ?>
     </div>
-    <footer>
-        <div class="line-separator"></div>
-        <p>
-            DTT Multimedia © 2015. All rights reserved.
-            <?php
-          echo $this->tag->linkTo(
-              "signin",
-              "Site Admin"
-          );
-        ?>
-        </p>
-    </footer>
-    <?php
-      $this->assets->outputJs();
-       ?>
+  </div>
+  <footer>
+    <div class="line-separator"></div>
+    <p>
+      DTT Multimedia © 2015. All rights reserved.
+      <?php
+      echo $this->tag->linkTo(
+          "signin",
+          "Site Admin"
+      );
+    ?>
+    </p>
+  </footer>
+  <?php
+  $this->assets->outputJs();
+  ?>
 </body>
 
 </html>
