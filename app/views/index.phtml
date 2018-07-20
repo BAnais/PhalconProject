@@ -34,7 +34,7 @@
                 </div>
                 <div class="logged">
                     You're logged in as
-                    <?php echo $userName ?>.
+                    <?php echo $this->session->get('userName'); ?>.
                     <?php echo $this->tag->linkTo(
               "logout",
               "Log out"
