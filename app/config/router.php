@@ -19,6 +19,24 @@ $router->add(
 );
 
 $router->add(
+  "/articles/edit/{id}",
+  [
+    "controller"=>"articles",
+    "action"=>"edit",
+    "params"=>1
+  ]
+);
+
+$router->add(
+  "/articles/create",
+  [
+    "controller"=>"articles",
+    "action"=>"create",
+    "params"=>1
+  ]
+);
+
+$router->add(
   "/article/{id}",
   [
     "controller"=>"articles",
@@ -27,14 +45,6 @@ $router->add(
   ]
 );
 
-$router->add(
-  "articles/edit/{id}",
-  [
-    "controller"=>"articles",
-    "action"=>"edit",
-    "params"=>1
-  ]
-);
 $router->add(
   "/articles",
   [
@@ -57,6 +67,14 @@ $router->add(
   [
     "controller"=>"articles",
     "action"=>"homepage"
+  ]
+);
+
+$router->add(
+  "/signin/login",
+  [
+    "controller"=>"signin",
+    "action"=>"login"
   ]
 );
 
