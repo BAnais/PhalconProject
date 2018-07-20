@@ -35,6 +35,14 @@ $router->add(
     "params"=>1
   ]
 );
+$router->add(
+  "/articles",
+  [
+    "controller"=>"articles",
+    "action"=>"index",
+    "params"=>1
+  ]
+);
 
 $router->add(
   "/archive",
