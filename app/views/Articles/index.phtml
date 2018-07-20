@@ -17,7 +17,7 @@ echo Phalcon\Tag::stylesheetLink("css/style.css");
 for($x=0; $x<$articles->count();$x++){
 ?>
 <div class="tableauArticles">
-  <a href="/administration/edit/<?php print($articles[$x]->id) ?>" class="click">
+  <a href="/articles/edit/<?php print($articles[$x]->id) ?>" class="click">
     <div class="row tableArticles <?php echo $x%2==0? '2' : 'yellowBackTable' ?>">
     <div class="col-xs-3 PubDateArticles">
       <?php
@@ -45,8 +45,8 @@ for($x=0; $x<$articles->count();$x++){
 </div>
 <?php
   echo $this->tag->linkTo(
-  "administration",
+  "articles/create",
   "Add new Article"
   );
-
+ echo $this->tag->linkTo(["Articles/delete/" . $article->id, "Delete"]);
 ?>
