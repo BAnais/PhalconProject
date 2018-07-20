@@ -83,10 +83,12 @@ body{
   padding-right:              0;
   margin-bottom:              2%;
 }
-#art.publicationDate{
-  font-size:                  85%;
+#date.publicationDate, #art.publicationDate{
   text-align:                 right;
   padding-top:                1%;
+}
+#art.publicationDate{
+  font-size:                  85%;
 }
 
 #articleSum.summary{
