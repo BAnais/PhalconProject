@@ -8,36 +8,36 @@ echo Phalcon\Tag::stylesheetLink("css/style.css");
       ?>
     <div class="row box">
       <a href="/article/<?php print($articles[$x]->id) ?>" class="click">
-      <div class="row article">
-        <div class="col-xs-2 publicationDate">
-          <?php
-          echo $date=strtoupper(date_format(date_create($articles[$x]->publicationDate), 'd F'));
-          ?>
-      </div>
-      <div class="col-xs-7 title">
+        <div class="row article">
+          <div class="col-xs-2 publicationDate">
             <?php
-            print($articles[$x]->title);
+            echo $date=strtoupper(date_format(date_create($articles[$x]->publicationDate), 'd F'));
             ?>
-      </div>
-      </div>
-        <div class="row ">
-          <div class="col-xs-8 col-xs-offset-2 summary">
-          <?php
-          print($articles[$x]->summary);
-          ?>
-      </div>
-      </div>
-    </a>
+          </div>
+          <div class="col-xs-7 title">
+                <?php
+                print($articles[$x]->title);
+                ?>
+          </div>
+        </div>
+          <div class="row ">
+            <div class="col-xs-8 col-xs-offset-2 summary">
+              <?php
+              print($articles[$x]->summary);
+              ?>
+            </div>
+          </div>
+        </a>
     </div>
     <?php
     }
     ?>
     <div class="row">
-    <?php
-      echo $this->tag->linkTo(
-        "archive",
-        "Article Archive"
-      );
-      ?>
+      <?php
+        echo $this->tag->linkTo(
+          "archive",
+          "Article Archive"
+        );
+        ?>
     </div>
   </div>
