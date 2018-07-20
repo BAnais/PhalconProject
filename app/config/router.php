@@ -1,6 +1,6 @@
 <?php
 
-$router = $di->getRouter();
+$router = $di->getRouter(false);
 
 // Define your routes here
 $router->add(
@@ -84,6 +84,10 @@ $router->add(
   ]
 );
 
+$router->notFound(array(
+    "controller" => "index",
+    "action" => "redirect"
+));
 
 
 $router->handle();
