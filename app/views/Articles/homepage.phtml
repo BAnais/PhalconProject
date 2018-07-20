@@ -9,7 +9,7 @@ echo Phalcon\Tag::stylesheetLink("css/style.css");
     <div class="row box">
       <a href="/article/<?php print($articles[$x]->id) ?>" class="click">
         <div class="row article">
-          <div class="col-xs-2 publicationDate">
+          <div class="col-xs-2 publicationDate" id="date">
             <?php
             echo $date=strtoupper(date_format(date_create($articles[$x]->publicationDate), 'd F'));
             ?>
