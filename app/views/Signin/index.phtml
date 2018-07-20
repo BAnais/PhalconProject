@@ -19,7 +19,7 @@ echo Phalcon\Tag::stylesheetLink("css/style.css");
         <div class="col-xs-2 logFields">
           <label for="userName">Username</label>
         </div>
-          <?php echo $this->tag->textField(["userName", 'class'=>'input', "placeholder"=> "Your admin username"]); ?>
+          <?php echo $this->tag->textField(["userName", 'class'=>'input', "placeholder"=> "Your admin username", "autocomplete" => "off"]); ?>
       </div>
 
       <div class="row">
