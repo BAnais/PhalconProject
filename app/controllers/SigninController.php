@@ -9,7 +9,6 @@ class SigninController extends ControllerBase
       return $this->response->redirect("articles")->send();
     }
   }
-//hasing and salting https://crackstation.net/hashing-security.htm
 
   public function loginAction() {
 
@@ -48,12 +47,37 @@ class SigninController extends ControllerBase
     }
   }
 
-  // TODO: notfound & failed action
 
 
   public function logoutAction() {
      $this->session->remove('auth');
      return $this->response->redirect("homepage")->send();
+  }
+
+  public function createuserAction()
+  {
+    $user = new Users();
+
+    $user->userName = $this->request->getPost("userName");
+    $user->userPassword = $this->request->getPost("userPassword");
+
+    // Store the password hashed
+    $user->userPassword = $this->security->hash($user->userPassword);
+    if(!Users::findFirstByuserName($user->userName)){
+      if ($user->save()) {
+        $this->flash->success("user was created successfully");
+        return $this->response->redirect("signin")->send();
+
+      }else {
+        foreach ($user->getMessages() as $message) {
+          $this->flash->error($message);
+        }
+
+      }
+    }else {
+      $this->flash->error("user already exist");
+
+    }
   }
 }
  ?>
