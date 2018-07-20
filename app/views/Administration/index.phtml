@@ -26,7 +26,7 @@ echo $this->tag->form("administration/register"); ?>
       [
       'title',
       'placeholder' => 'Name of the Article',
-      'class'=>'input',
+      'class'=>'input', "autocomplete" => "off"
       ]); ?>
     </div>
     <div class="row">
@@ -37,7 +37,7 @@ echo $this->tag->form("administration/register"); ?>
       [
       'summary',
       'placeholder' => 'Summary here',
-       'class'=>'input',
+       'class'=>'input', "autocomplete" => "off"
       ]); ?>
     </div>
     <div class="row">
@@ -49,7 +49,7 @@ echo $this->tag->form("administration/register"); ?>
       'content',
       'placeholder' => 'Write the content here',
       "rows" => 20,
-      'class'=>'input',
+      'class'=>'input', "autocomplete" => "off",
       'id' => 'areaPost'
       ]); ?>
     </div>
