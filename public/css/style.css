@@ -174,3 +174,7 @@ a.click:hover{
 #posts.boxLog{
   padding-bottom:             9%;
 }
+
+a.deleteTag{
+  margin-top:                 5%;
+}
