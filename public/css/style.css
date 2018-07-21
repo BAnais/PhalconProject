@@ -83,10 +83,12 @@ body{
   padding-right:              0;
   margin-bottom:              2%;
 }
-#art.publicationDate{
-  font-size:                  85%;
+#date.publicationDate, #art.publicationDate{
   text-align:                 right;
   padding-top:                1%;
+}
+#art.publicationDate{
+  font-size:                  85%;
 }
 
 #articleSum.summary{
@@ -154,6 +156,9 @@ a.click:hover{
   background-color:           rgba(255, 244, 210 , 1);
   padding:                    0 -15px 0 0;
 }
+.yellowBackTable:hover{
+  background-color :          rgba(255, 120, 75, 0.1);
+}
 
 .tableauArticles{
   border:                     1px solid rgba(0, 150, 170, 1);
@@ -173,4 +178,8 @@ a.click:hover{
 
 #posts.boxLog{
   padding-bottom:             9%;
+}
+
+a.deleteTag{
+  margin-top:                 5%;
 }

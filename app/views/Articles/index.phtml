@@ -14,39 +14,37 @@ echo Phalcon\Tag::stylesheetLink("css/style.css");
     </div>
   </div>
 <?php
-for($x=0; $x<$articles->count();$x++){
+for($x=0; $x<$articles->count();$x++)
+{
 ?>
-<div class="tableauArticles">
-  <a href="/administration/edit/<?php print($articles[$x]->id) ?>" class="click">
-    <div class="row tableArticles <?php echo $x%2==0? '2' : 'yellowBackTable' ?>">
-    <div class="col-xs-3 PubDateArticles">
-      <?php
-      echo $date=date_format(date_create($articles[$x]->publicationDate), 'd M Y');
-      ?>
-    </div>
-    <div class="col-xs-9 TitArticles">
-      <?php
-      print($articles[$x]->title);
-      ?>
-    </div>
+  <div class="tableauArticles">
+    <a href="/articles/edit/<?php print($articles[$x]->id) ?>" class="click">
+      <div class="row tableArticles <?php echo $x%2==0? '' : 'yellowBackTable' ?>">
+        <div class="col-xs-3 PubDateArticles">
+          <?php
+          echo $date=date_format(date_create($articles[$x]->publicationDate), 'd M Y');
+          ?>
+        </div>
+        <div class="col-xs-9 TitArticles">
+          <?php
+          print($articles[$x]->title);
+          ?>
+        </div>
+      </div>
+    </a>
   </div>
-</a>
-</div>
-
-
 <?php
 }
 ?>
 <div id="endArticles">
-<?php
-  $articleNumber= $articles->count() ;
-  echo $articleNumber.($articleNumber>1 ? ' articles ' : ' article ').' in total. </br> ';
-?>
+  <?php
+    $articleNumber= $articles->count() ;
+    echo $articleNumber.($articleNumber>1 ? ' articles ' : ' article ').' in total. </br> ';
+  ?>
 </div>
 <?php
   echo $this->tag->linkTo(
-  "administration",
+  "articles/create",
   "Add new Article"
   );
-
 ?>

@@ -8,5 +8,12 @@ class IndexController extends ControllerBase
 
     }
 
-}
+    /*
+    * redirect
+    */
+    public function redirectAction()
+    {
+      return $this->response->redirect("homepage")->send();
+    }
 
+}

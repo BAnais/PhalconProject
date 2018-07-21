@@ -6,20 +6,21 @@ echo Phalcon\Tag::stylesheetLink("css/style.css");
  <div class="row">
    <div class="col-xs-8 col-xs-offset-2 boxLog">
      <?php
-     if($this->session->get("errorLog")=='errorPwd' || $this->session->get("errorLog")=='errorUserN' ){
+     if($this->session->get("errorLog")=='errorPwd' || $this->session->get("errorLog")=='errorUserN' )
+      {
        $this->session->remove('errorLog');
        ?>
        <div class="errorMessage">
          Incorrect username or Password. Please try again.
        </div>
-     <?php
+       <?php
       }
       ?>
       <div class="row">
         <div class="col-xs-2 logFields">
           <label for="userName">Username</label>
         </div>
-          <?php echo $this->tag->textField(["userName", 'class'=>'input', "placeholder"=> "Your admin username", "autocomplete" => "off"]); ?>
+        <?php echo $this->tag->textField(["userName", 'class'=>'input', "placeholder"=> "Your admin username", "autocomplete" => "off"]); ?>
       </div>
 
       <div class="row">
@@ -36,7 +37,7 @@ echo Phalcon\Tag::stylesheetLink("css/style.css");
 <?php
 echo $this->tag->endForm();
 echo $this->tag->linkTo(
-    "createUser",
+    "createuser",
     "Create User"
 );
  ?>
